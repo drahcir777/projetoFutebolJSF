@@ -1,0 +1,66 @@
+<ui:composition template="layoutPadrao.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:define name="titulo">Lista das Partidas</ui:define>
+
+<ui:define name="corpo">
+	<h:form>
+		<p:growl />
+
+		<p:panel style="text-align:center" header="Lista de Partidas">
+			<p:dataTable border="1" 
+				value="#{partidaController.lista}" var="partida"
+				emptyMessage="Nenhuma partida cadastrada!">
+				
+				<p:column headerText="Horario da Partida">
+					<h:outputText value="#{partida.horario}" />
+				</p:column>
+				
+				
+				<p:column headerText="Local da Partida">
+					<h:outputText value="#{partida.localPartida}" />
+				</p:column>
+				
+				
+				<p:column headerText="Time da Casa">
+					<h:outputText value="#{partida.time.nomeTime}" />
+				</p:column>
+				
+				<p:column style="text-align:center" headerText="PLACAR">
+					<h:outputText value="#{partida.qtdGolTime}  X #{partida.qtdGolTime2}" />
+					</p:column>
+				
+				<p:column headerText="Time Visitante">
+					<h:outputText value="#{partida.time2.nomeTime2}" />
+				</p:column>
+				
+				
+				<p:column headerText="Status da Partida">
+					<h:outputText value="#{partida.status.descStatus}" />
+				</p:column>
+
+				<p:column headerText="Ação">
+					<p:commandButton value="Excluir"
+						action="#{partidaController.excluir}"
+						ajax="false">
+						<f:setPropertyActionListener 
+							value="#{partida}" 
+							target="#{partidaController.partida}" />	
+					</p:commandButton>
+					<p:commandButton value="Editar"
+						action="#{partidaController.editar}"
+						ajax="false">
+						<f:setPropertyActionListener 
+							value="#{partida}" 
+							target="#{partidaController.partida}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+</ui:define>
+</ui:composition>

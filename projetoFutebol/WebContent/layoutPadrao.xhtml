@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="titulo">Tela Inicial</ui:insert></title>
+</h:head>
+
+<h:body>
+	<header>
+		<h:form>
+			<p:menubar>
+				<p:submenu label="Cadastro">
+					<p:menuitem value="Partida" outcome="cadastroPartida" />
+					<p:menuitem value="Status da Partida" outcome="cadastroStatus" />
+					<p:menuitem value="Time da Casa" outcome="cadastroTime" />
+					<p:menuitem value="Time Visitante" outcome="cadastroTime2" />
+				</p:submenu>
+				
+				<p:submenu label="Lista">
+					<p:menuitem value="Partidas" outcome="listaPartida" />
+				</p:submenu>
+			</p:menubar>
+		</h:form>
+	</header>
+	<div id="conteudo">
+		<ui:insert name="corpo" />
+	</div>
+	<footer style="text-align: center;">
+		Rodapé do sistema.
+	</footer>
+</h:body>
+</html>
